@@ -7,7 +7,6 @@ coverage/
 # Production
 main.js
 package-lock.json
-package.json
 
 # styles.css # styles.css is often source in simple plugins, uncomment if generated
 
