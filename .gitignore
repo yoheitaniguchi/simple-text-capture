@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Testing
+coverage/
+
+# Production
+main.js
+# styles.css # styles.css is often source in simple plugins, uncomment if generated
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+*.log

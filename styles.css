@@ -1,0 +1,53 @@
+/* Main Modal Container Override */
+.modal-container.simple-text-capture-modal-container .modal {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    max-width: 95vw;
+}
+
+/* Remove default header/close button if any */
+.modal-container.simple-text-capture-modal-container .modal-close-button {
+    display: none;
+}
+
+.simple-text-capture-modal-content {
+    background-color: #1a1a1a;
+    /* Dark background */
+    border: 2px solid #ffffff;
+    /* White border */
+    border-radius: 20px;
+    /* Rounded corners */
+    padding: 10px 20px;
+    width: 100%;
+    margin: 0 auto;
+
+    /* Center text vertically if needed, but textarea handles it */
+    display: flex;
+    align-items: center;
+}
+
+.simple-text-capture-modal-content textarea {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    height: 42px;
+    /* Single line height */
+    resize: both;
+    /* Allow resizing */
+    font-family: var(--font-monospace);
+    font-size: 14pt;
+    line-height: 1.5;
+    padding: 0;
+    outline: none;
+    /* Remove blue outline */
+    min-width: 200px;
+    min-height: 42px;
+}
+
+/* Remove scrollbars */
+.simple-text-capture-modal-content textarea::-webkit-scrollbar {
+    display: none;
+}

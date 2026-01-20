@@ -1,0 +1,10 @@
+{
+	"id": "simple-text-capture",
+	"name": "Simple Text Capture",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "A simple plugin to capture text quickly with Win+Q",
+	"author": "Antigravity",
+	"authorUrl": "https://github.com/obsidianmd/obsidian-sample-plugin",
+	"isDesktopOnly": false
+}
