@@ -23,9 +23,6 @@
     padding: 10px 20px;
     width: 100%;
     margin: 0 auto;
-
-    display: flex;
-    align-items: flex-end;
 }
 
 .simple-text-capture-modal-content textarea {
@@ -33,15 +30,20 @@
     border: none;
     color: #ffffff;
     width: 100%;
-    height: auto;
 
     font-family: var(--font-monospace);
     font-size: 14pt;
-    line-height: 1.0;
-    padding: 0;
     outline: none;
-
     resize: none;
+
+    display: flex;
+    align-items: center;
+    padding: 14px 0px 0px 0px;
+    /* 上下に20px、左右に10pxの余白 */
+    line-height: 0.6;
+    /* 行間を整えるとより綺麗に見えます */
+    height: auto;
+    /* 内容に合わせて調整 */
 }
 
 /* Remove scrollbars */
