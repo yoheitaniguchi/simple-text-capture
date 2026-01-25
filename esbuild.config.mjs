@@ -50,8 +50,54 @@ const context = await esbuild.context({
     outfile: "main.js",
 });
 
+import fs from "fs";
+import path from "path";
+
 if (prod) {
     await context.rebuild();
+
+    // Cross-platform copy logic
+    try {
+        const envPath = path.resolve(process.cwd(), '.env');
+        if (fs.existsSync(envPath)) {
+            const envContent = fs.readFileSync(envPath, 'utf8');
+            // Simple regex to find the variable. Handles quotes optionally.
+            const match = envContent.match(/^OBSIDIAN_PLUGIN_DEST=(?:["'])(.*?)(?:["'])|^OBSIDIAN_PLUGIN_DEST=(.*?)$/m);
+
+            let dest = null;
+            if (match) {
+                dest = match[1] || match[2];
+            }
+
+            if (dest) {
+                // Remove carriage returns just in case
+                dest = dest.trim();
+
+                if (!fs.existsSync(dest)) {
+                    fs.mkdirSync(dest, { recursive: true });
+                    console.log(`Created directory: ${dest}`);
+                }
+
+                const files = ['main.js', 'manifest.json', 'styles.css'];
+                for (const file of files) {
+                    if (fs.existsSync(file)) {
+                        fs.copyFileSync(file, path.join(dest, file));
+                        console.log(`Copied ${file} to ${dest}`);
+                    } else {
+                        console.warn(`Warning: File not found: ${file}`);
+                    }
+                }
+            } else {
+                console.log('OBSIDIAN_PLUGIN_DEST not found in .env, skipping copy.');
+            }
+        } else {
+            console.log('.env file not found, skipping copy.');
+        }
+    } catch (e) {
+        console.error('Error copying files:', e);
+        process.exit(1);
+    }
+
     process.exit(0);
 } else {
     await context.watch();
